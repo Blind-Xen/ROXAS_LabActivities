@@ -1,0 +1,172 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Scanlines overlay */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.container { width: 100%; max-width: 620px; }
+
+h1 {
+    font-size: clamp(10px, 2.5vw, 14px);
+    color: #00ffcc;
+    text-shadow: 0 0 14px #00ffcc;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.subtitle { font-size: 7px; color: #444; letter-spacing: 1px; margin-bottom: 30px; }
+
+/* ── Stats ── */
+.stats { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+.stat { font-size: 7px; color: #555; }
+.stat .num { font-size: 11px; }
+.stat.total   .num { color: #fff; }
+.stat.done    .num { color: #ffd700; }
+.stat.pending .num { color: #ff4444; }
+
+/* ── Input row ── */
+.input-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+
+#taskInput {
+    flex: 1;
+    min-width: 180px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 7px;
+    padding: 13px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    letter-spacing: 1px;
+}
+#taskInput::placeholder { color: #444; }
+#taskInput:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 10px rgba(0,255,204,0.15);
+}
+
+#addBtn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 7px;
+    padding: 13px 18px;
+    background: transparent;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
+#addBtn:hover { background: #00ffcc; color: #000; box-shadow: 0 0 20px #00ffcc; }
+
+/* ── Task list ── */
+#taskList { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+#taskList li {
+    background: #111;
+    border: 1px solid #222;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 7px;
+    color: #ccc;
+    line-height: 2;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#taskList li:hover { border-color: rgba(0,255,204,0.2); transform: translateX(4px); }
+#taskList li.completed { opacity: 0.4; text-decoration: line-through; color: #555; }
+
+/* Checkbox icon */
+.check-icon {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #444;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    transition: all 0.2s;
+}
+li.completed .check-icon { border-color: #00ffcc; color: #00ffcc; background: rgba(0,255,204,0.1); }
+
+.task-text { flex: 1; }
+
+/* Delete button */
+.delete-btn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 6px;
+    padding: 5px 9px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.delete-btn:hover { border-color: #ff4444; color: #ff4444; box-shadow: 0 0 10px rgba(255,68,68,0.2); }
+
+/* ── Empty state ── */
+#emptyState {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 7px;
+    color: #333;
+    line-height: 3;
+    display: none;
+}
+
+/* ── Clear button ── */
+#clearBtn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 6px;
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #444;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: all 0.2s;
+}
+#clearBtn:hover { border-color: #ff4444; color: #ff4444; }
+
+/* ── Back link ── */
+.back-link {
+    font-size: 7px;
+    color: #444;
+    text-decoration: none;
+    margin-top: 36px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+.back-link:hover { color: #00ffcc; }

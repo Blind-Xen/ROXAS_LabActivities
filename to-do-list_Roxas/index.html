@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission Log // SSS Dragon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <h1>// MISSION LOG</h1>
+        <p class="subtitle">SSS DRAGON — ALPHA CENTAURI EXPEDITION</p>
+
+        <div class="stats">
+            <div class="stat total">TOTAL <span class="num" id="statTotal">0</span></div>
+            <div class="stat done">DONE <span class="num" id="statDone">0</span></div>
+            <div class="stat pending">PENDING <span class="num" id="statPending">0</span></div>
+        </div>
+
+        <div class="input-row">
+            <input type="text" id="taskInput" placeholder="ENTER MISSION OBJECTIVE...">
+            <button id="addBtn">+ ADD</button>
+        </div>
+
+        <ul id="taskList"></ul>
+
+        <div id="emptyState">🚀<br>NO MISSIONS LOGGED.<br>ADD ONE ABOVE.</div>
+
+        <button id="clearBtn">CLEAR COMPLETED</button>
+
+        <a href="#" class="back-link">← BACK TO PORTFOLIO</a>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
